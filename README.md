@@ -62,3 +62,11 @@ access shell in `tester-service`:
 Currently 3. condition isn't met. It looks like docker forwards ports only from `common-net` network interface while I have nginx listening on `nginx-net` interface (so that the webserver can't be accessible to `tester-service`). 
 
 I'd like to be able to tell docker that is should listen to the ip aliased as `nginx-net_nginx` not `common-net_nginx`.
+
+# helpful commands:
+
+`nginx -s reload` - reloads the server to reflect changes in the server configuration (doesn't work for every type of change unfortunatelly so use with caution)
+
+`netstat -tln` shows on what ports a host/container is listening
+
+`ip addr show` or `ifconfig` - shows network interfaces
