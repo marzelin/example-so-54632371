@@ -1,3 +1,7 @@
+# Workaround
+
+Change the `nginx-net` name to be alphabetically earlier that `common-net`, i.e. `anginx-net`. It seems that when publishing ports from container connected to more than one network, docker chooses the network interface whose network's name is alphabetically first.
+
 # Overview
 We've got 2 services:
 1. `nginx-service` - server that serves html on port 80. This is `nginx:alpine` with one line modified in `/etc/nginx/conf.d/default.conf`: 
