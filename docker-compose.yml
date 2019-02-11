@@ -1,0 +1,27 @@
+version: "3.5"
+
+services:
+  nginx-service:
+    build: ./nginx-service
+    ports:
+      - 127.0.0.1:8080:80
+    volumes:
+      - ./nginx-service/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-service/conf.d:/etc/nginx/conf.d
+    networks:
+      nginx-net:
+        aliases:
+          - nginx-net_nginx
+      common-net:
+        aliases:
+          - common-net_nginx
+  tester-service:
+    image: alpine
+    tty: true
+    networks:
+      - common-net
+
+networks:
+  nginx-net:
+  common-net:
+
